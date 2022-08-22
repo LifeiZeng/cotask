@@ -1,2 +1,7 @@
 # cotask
-simple small coroutine
+simple coroutine
+
+1.  介绍
+    简单的c/c++协程实现，目前支持amd64和arm64架构。
+    在i7-8750H 环境下，单核性能约1.8亿次/秒，来回跳转（两次跳转）。
+    在M1 Pro   环境下，单核性能约0.7亿次/秒，来回跳转。
