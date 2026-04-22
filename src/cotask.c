@@ -1,7 +1,7 @@
 #include "../inc/cotask.h"
 #include <stdlib.h>
 
-#define MINSTACK (1024 * 2)
+#define MINSTACK (1024 * 1)
 
 extern void coctxt_switch(COTASK dest, COTASK from);
 extern void coctxt_return(COTASK dest);
@@ -9,7 +9,6 @@ extern void coctxt_return(COTASK dest);
 struct TASK_T
 {
 #ifdef __amd64
-    COCPTR _rsp;
     COCPTR _rbp;
     COCPTR _rbx;
     COCPTR _r12;
@@ -19,8 +18,11 @@ struct TASK_T
 #ifdef _WIN64
     COCPTR _rsi;
     COCPTR _rdi;
+    COCPTR _rsp;
     COCPTR tib0;
     COCPTR tib1;
+#else
+    COCPTR _rsp;
 #endif
 #endif
 #ifdef __arm64
@@ -75,7 +77,9 @@ COVOID cotask_deleteroot(COTASK root)
         free(task);
         task = next;
     }
-    free(root);
+    {
+        free(root);
+    }
 }
 
 COTASK cotask_createtask(COFUNC func, COCPTR ctxt, COTASK root)

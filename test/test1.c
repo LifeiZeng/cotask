@@ -41,13 +41,13 @@ int main()
             cotask_resume(fun2, root);
             cotask_resume(fun3, root);
         }
-        cnts += 50000000L * 4;
+        cnts += 50000000L * 8;
 
         long e = clock();
     #ifdef _WIN64
-        printf("%I64d,%I64d\n", cnts, cnts * CLOCKS_PER_SEC / (e - s));
+        printf("%lld,%lld\n", cnts, cnts * CLOCKS_PER_SEC / (e - s));
     #else
-        printf("%ld,%ld\n",     cnts, cnts * CLOCKS_PER_SEC / (e - s));
+        printf("%ld,%ld\n",   cnts, cnts * CLOCKS_PER_SEC / (e - s));
     #endif
     }
 
