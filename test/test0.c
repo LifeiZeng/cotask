@@ -23,7 +23,7 @@ void func2(COTASK task, COCPTR data)
 
 int main()
 {
-    root0 = cotask_createroot(1024 * 2);
+    root0 = cotask_createroot(1024 * 8);
     task1 = cotask_createtask(func1, 0, root0);
     task2 = cotask_createtask(func2, 0, root0);
 

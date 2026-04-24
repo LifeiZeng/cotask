@@ -23,7 +23,7 @@ int main()
     signal(SIGTERM, loopinterrupt);
     signal(SIGSTOP, loopinterrupt);
 
-    COTASK root = cotask_createroot(1024 * 2);
+    COTASK root = cotask_createroot(1024 * 1);
     COTASK fun0 = cotask_createtask(func, 0, root);
     COTASK fun1 = cotask_createtask(func, 0, root);
     COTASK fun2 = cotask_createtask(func, 0, root);

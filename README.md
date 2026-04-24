@@ -7,8 +7,13 @@ simple-fast coroutine
 
 2.  性能（单核）
 
-    intel i7-8750H, macos, 3.5亿次 / 秒。  
-    apple m5 pro,   macos, 7.5亿次 / 秒。
+    | CPU             | System  | Context Switches/sec​ |
+    | --------------- | ------- | -------------------- |
+    | intel i7-8750H  | macos   |   3.5 亿次 / 秒       |
+    | apple m5 pro    | macos   |   7.5 亿次 / 秒       |
+    | intel i5-9600K  | windows |   2.8 亿次 / 秒       |
+    | intel i5-9600K  | linux   |   4.1 亿次 / 秒       |
+    | intel i5-12400  | windows |   4.7 亿次 / 秒       |
 
 3.  许可协议
 
