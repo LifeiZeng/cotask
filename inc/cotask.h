@@ -17,10 +17,7 @@ typedef COVOID (*COFUNC)(COTASK, COCPTR);
 
 COTASK cotask_createroot(COLONG size);
 COVOID cotask_deleteroot(COTASK root);
-
 COTASK cotask_createtask(COFUNC func, COCPTR ctxt, COTASK root);
-COVOID cotask_deletetask(COTASK task);
-COTASK cotask_obtainroot(COTASK task);
 
 COVOID cotask_resume(COTASK dest, COTASK from);
 COVOID cotask_yields(COTASK from);

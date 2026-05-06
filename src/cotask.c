@@ -5,17 +5,19 @@
 
 extern void coctxt_switch(COTASK dest, COTASK from);
 extern void coctxt_return(COTASK dest);
+COVOID cotask_deletetask (COTASK task);
+COTASK cotask_obtainroot (COTASK task);
 
 struct TASK_T
 {
-#ifdef __amd64
+#if defined(__amd64) || defined(_M_AMD64)
     COCPTR _rbp;
     COCPTR _rbx;
     COCPTR _r12;
     COCPTR _r13;
     COCPTR _r14;
     COCPTR _r15;
-#ifdef _WIN64
+#if defined(_WIN64)
     COCPTR _rsi;
     COCPTR _rdi;
     COCPTR _rsp;
@@ -25,7 +27,7 @@ struct TASK_T
     COCPTR _rsp;
 #endif
 #endif
-#ifdef __arm64
+#if defined(__arm64)
     COCPTR _x19;
     COCPTR _x20;
     COCPTR _x21;
@@ -98,15 +100,15 @@ COTASK cotask_createtask(COFUNC func, COCPTR ctxt, COTASK root)
     }
 
     COLONG _rsp = ((COLONG)task + size) & (~0xF);
-#ifdef __amd64
+#if defined(__amd64) || defined(_M_AMD64)
     ((COCPTR *)_rsp)[-2] = (COCPTR)cotask_mainex;
     task->_rsp = (COCPTR)(_rsp - sizeof(COCPTR));
-#ifdef _WIN64
+#if defined(_WIN64)
     task->tib0 = (COCPTR)(_rsp);
     task->tib1 = (COCPTR)(task);
 #endif
 #endif
-#ifdef __arm64
+#if defined(__arm64)
     task->_x30 = (COCPTR)cotask_mainex;
     task->_rsp = (COCPTR)(_rsp);
 #endif
